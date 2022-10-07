@@ -1237,10 +1237,17 @@ def extract_pcaps(archivename, pcap_files, job_id, dupcount):
             return msg
     return None
 
+
+@dalton_blueprint.route('/dalton/coverage/suricata', methods=['POST'])
 #  abstracting the job submission method away from the HTTP POST and creating this
 #   function so that it can be called easier (e.g. from an API)
 def submit_job():
+    """API call that accepts pcaps and submits job"""
+    global r
+    global STAT_CODE_DONE
+
     logger.debug("submit_job() called")
+    print(STAT_CODE_DONE)
     # never finished coding this...
     # TODO: API call that accepts a job zipfile and queues it up for an agent?
     #       would have to beef up input validation on agent probably....
